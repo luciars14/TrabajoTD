@@ -1,0 +1,28 @@
+---
+title: "Trabajo 01: Métodos de incertidumbre"
+author: "Lucía Romero Sánchez"
+date: "2023-10-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ 
+## PROBLEMA 1: Tabla de decisión 
+
+**Construir una tabla de decisión con valores inventados y resolver el problema con los métodos o funciones individuales de Incertidumbre por separado (tanto en situación favorable como desfavorable).**
+
+
+##### PROBLEMA 2:
+
+**Inventar un enunciado que se refiera a una situación real y realizar su resolución con la función R que devuelve la resolución de todos los métodos en una única tabla.**
+
+Sergio es un ingeniero que trabaja en una empresa aeronáutica sevillana. Para firmar un contrato de producción de nuevos aviones, debe viajar a Madrid y alojarse durante varios días allí, por lo que debe llevarse una maleta de gran tamaño. Para su viaje está consultando 3 aerolíneas de manera que su desplazamiento le salga lo más económico posible. 
+
+En cuanto al precio de los billetes, la aerolínea Ryanair ofrece el viaje de ida por 25€ y la posibilidad de reservar por adelantado el viaje de vuelta por 40€. La aerolínea Vueling, ofrece el viaje de ida por 39€ y el viaje de vuelta por 33€. Finalmente, Iberia ofrece el viaje de ida por 60€ y el viaje de vuelta por 10€.
+
+Como Sergio debe facturar maleta, las compañías le exigen pagar un suplemento de 45€ (Ryanair), de 29€ (Vueling) y de 25€ (Iberia).
+
+¿En qué aerolínea debería comprar Sergio su billete de manera que su desplazamiento le salga lo más económico posible?
