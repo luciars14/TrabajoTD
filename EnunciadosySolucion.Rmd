@@ -8,19 +8,6 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
----
-title: "Trabajo 01: Métodos de incertidumbre"
-author: "Lucía Romero Sánchez"
-date: "2023-10-18" o redactado?
-output:
-  pdf_document: default
-  html_document: default
----
-
-```{r setup, include=FALSE}
 rm(list=ls()) #Elimina todos los datos almacenados
 library(kableExtra)
 library(tidyverse)
@@ -35,10 +22,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **Construir una tabla de decisión con valores inventados y resolver el problema con los métodos o funciones individuales de Incertidumbre por separado (tanto en situación favorable como desfavorable).**
 ```{r echo=FALSE}
-set.seed(793) # Fijamos una semilla para generar siempre los mismos valores
-datos = runif(10*4) # Creación de n=40 datos aleatorios 
-datos
-tabla_1 = crea.tablaX(datos, 10, 4) # Creación de la tabla
+datos_1 = c(0.2,1,
+            4,7,
+            1,0.33,
+            1,5)
+crea.tablaX = function(datos_1,numalternativas=4,numestados=2) {
+  
+  X = matrix(datos_1,nrow=numalternativas,ncol=numestados,byrow=TRUE)
+  colnames(X) = paste('e',1:numestados,sep='');
+  rownames(X) = paste('d',1:numalternativas,sep='');
+  return(X);
+  
+}
+
+tabla_1 = crea.tablaX(datos_1, 4, 2)
 tabla_1 
 ```
 
@@ -203,7 +200,8 @@ cat("La alternativa óptima por el criterio ",PuntoIdealD$criterio, " en el caso
 
 \newpage
 ##### PROBLEMA 2:
-* Inventar un enunciado que se refiera a una situación real y realizar su resolución con la función R que devuelve la resolución de todos los métodos en una única tabla.
+
+**Inventar un enunciado que se refiera a una situación real y realizar su resolución con la función R que devuelve la resolución de todos los métodos en una única tabla.**
 
 Sergio es un ingeniero que trabaja en una empresa aeronáutica sevillana. Para firmar un contrato de producción de nuevos aviones, debe viajar a Madrid y alojarse durante varios días allí, por lo que debe llevarse una maleta de gran tamaño. Para su viaje está consultando 3 aerolíneas de manera que su desplazamiento le salga lo más económico posible. 
  
@@ -245,4 +243,6 @@ kable(Solucion, booktabs = TRUE,align = "c",linesep = " ") %>%
                 bootstrap_options = "striped", full_width = T) 
 ```
 
-...
+Mediante la resolución que hemos realizado, podemos concluir que la aerolínea elegida por Sergio para comprar su billete debería ser Iberia puesto que cumple con el criterio Optimista.
+
+Por el contrario, la menos recomendable es Vueling debido a su criterio Pesimista (o también llamado criterio de Wald).
